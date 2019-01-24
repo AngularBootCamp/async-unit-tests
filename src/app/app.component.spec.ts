@@ -4,11 +4,8 @@ import { of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { AppComponent } from './app.component';
-import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
-
-// tslint:disable-next-line:no-require-imports
-const testData: Employee[] = require('./testData.json');
+import { employees } from './test-data';
 
 describe('App Component', () => {
 
@@ -19,18 +16,16 @@ describe('App Component', () => {
     employeeService = jasmine.createSpyObj<EmployeeService>('EmployeeService', ['getFilteredList']);
   });
 
-  // These tests do not currently work in the curriculum kit.
-  // They do work when run in a CLI app using ng test
-  xdescribe('filtered team list (manual asynchronous testing with fakeAsync)', () => {
+  describe('filtered team list (manual asynchronous testing with fakeAsync)', () => {
     it ('should respond to user typing after 250 ms', fakeAsync(() => {
-      employeeService.getFilteredList.and.returnValue(of(testData));
+      employeeService.getFilteredList.and.returnValue(of(employees));
       appComponent = new AppComponent(employeeService);
 
       appComponent.filteredTeam
         .pipe(
           take(1)
         )
-        .subscribe(team => expect(team).toEqual(testData));
+        .subscribe(team => expect(team).toEqual(employees));
 
       appComponent.nameFilter.setValue('Henry');
       expect(employeeService.getFilteredList).not.toHaveBeenCalled();
@@ -41,14 +36,14 @@ describe('App Component', () => {
     }));
 
     it ('should only make one call, 250ms after last typing', fakeAsync(() => {
-      employeeService.getFilteredList.and.returnValue(of(testData));
+      employeeService.getFilteredList.and.returnValue(of(employees));
       appComponent = new AppComponent(employeeService);
 
       appComponent.filteredTeam
         .pipe(
           take(1)
         )
-        .subscribe(team => expect(team).toEqual(testData));
+        .subscribe(team => expect(team).toEqual(employees));
 
       appComponent.nameFilter.setValue('Henry');
       expect(employeeService.getFilteredList).not.toHaveBeenCalled();
