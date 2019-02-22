@@ -11,9 +11,6 @@ describe('Employee Service', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        EmployeeService
-      ],
       imports: [
         HttpClientTestingModule
       ]

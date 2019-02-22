@@ -5,7 +5,7 @@ import { catchError, delay, map } from 'rxjs/operators';
 
 import { Employee } from './employee';
 
-const API_URL = 'https://api.angularbootcamp.com';
+const apiUrl = 'https://api.angularbootcamp.com';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getDelayedList(): Observable<string[]> {
-    return this.http.get<Employee[]>(API_URL + '/employees')
+    return this.http.get<Employee[]>(apiUrl + '/employees')
       .pipe(
         delay(2000), // this will force us to test asynchronously
         map(employees => employees.map(e => e.first_name)),
@@ -34,6 +34,6 @@ export class EmployeeService {
       .set('q', searchText)
       .set('_limit', '20');
 
-    return this.http.get<Employee[]>(API_URL + '/employees', { params });
+    return this.http.get<Employee[]>(apiUrl + '/employees', { params });
   }
 }
