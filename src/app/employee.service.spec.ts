@@ -1,4 +1,7 @@
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
 import { TestBed, async } from '@angular/core/testing';
 
 import { Employee } from './employee';
@@ -7,13 +10,11 @@ import { EmployeeService } from './employee.service';
 describe('Employee Service', () => {
   let httpTestingController: HttpTestingController;
   let service: EmployeeService;
-  let testData: Partial<Employee>[];
+  let testData: Array<Partial<Employee>>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
-      ]
+      imports: [HttpClientTestingModule]
     });
 
     httpTestingController = TestBed.get(HttpTestingController);
@@ -39,7 +40,6 @@ describe('Employee Service', () => {
   // If you change the xit to fit, the test will probably pass.
   xit('should return a delayed list (false positive)(the wrong way)', () => {
     service.getDelayedList().subscribe(data => {
-
       // This line may not get executed before the test finishes!!!
       expect(data).toEqual(['Bob', 'Joe', 'foo']);
     });

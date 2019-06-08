@@ -6,14 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

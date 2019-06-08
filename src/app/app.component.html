@@ -1,22 +1,31 @@
 <a href="test.html">
   <button class="btn">Run the tests here</button>
 </a>
-<a href="https://developers.livechatinc.com/blog/angular-dependency-injection-components/">
+<a
+  href="https://developers.livechatinc.com/blog/angular-dependency-injection-components/"
+>
   <button class="btn">Great Reference on Testing</button>
 </a>
 <a href="https://angular.io/guide/testing">
   <button class="btn">Testing Docs</button>
 </a>
 
-<p>(If you are viewing this online with StackBlitz or similar tool,
-    the unit tests won't work with the link above.)</p>
+<p>
+  (If you are viewing this online with StackBlitz or similar tool, the
+  unit tests won't work with the link above.)
+</p>
 
 <section class="card">
   <div class="card-content">
     <div class="card-title">Filtered Employee team</div>
     <div>
       <label for="nameFilter">Name Filter</label>
-      <input id="nameFilter" type="text" autocomplete="off" [formControl]="nameFilter">
+      <input
+        id="nameFilter"
+        type="text"
+        autocomplete="off"
+        [formControl]="nameFilter"
+      />
     </div>
     <span *ngFor="let e of filteredTeam | async">
       <pre>{{ e | json }}</pre>

@@ -15,11 +15,10 @@ export class AppComponent {
   filteredTeam: Observable<Employee[]>;
 
   constructor(sw: EmployeeService) {
-    this.filteredTeam = this.nameFilter.valueChanges
-      .pipe(
-        startWith(this.nameFilter.value),
-        debounceTime(250),
-        switchMap(x => sw.getFilteredList(x))
-      );
+    this.filteredTeam = this.nameFilter.valueChanges.pipe(
+      startWith(this.nameFilter.value),
+      debounceTime(250),
+      switchMap(x => sw.getFilteredList(x))
+    );
   }
 }
