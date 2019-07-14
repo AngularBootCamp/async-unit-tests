@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor(sw: EmployeeService) {
     this.filteredTeam = this.nameFilter.valueChanges.pipe(
-      startWith(this.nameFilter.value),
+      startWith(this.nameFilter.value as string),
       debounceTime(250),
       switchMap(x => sw.getFilteredList(x))
     );
