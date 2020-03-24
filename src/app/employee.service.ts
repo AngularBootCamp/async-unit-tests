@@ -20,8 +20,8 @@ export class EmployeeService {
       map(names => names.sort()),
       catchError(err => {
         console.error('handling error within getEmployees()', err);
-        const fakeData = ['no employees could be loaded'];
-        return of(fakeData);
+        const mockEmployees = ['no employees could be loaded'];
+        return of(mockEmployees);
       })
     );
   }

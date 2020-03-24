@@ -6,7 +6,7 @@ import { take } from 'rxjs/operators';
 
 import { AppComponent } from './app.component';
 import { EmployeeService } from './employee.service';
-import { employees } from './test-data';
+import { employees } from './test-employees';
 
 describe('App Component', () => {
   let appComponent: AppComponent;

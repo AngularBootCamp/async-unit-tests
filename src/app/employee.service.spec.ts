@@ -10,17 +10,17 @@ import { EmployeeService } from './employee.service';
 describe('Employee Service', () => {
   let httpTestingController: HttpTestingController;
   let service: EmployeeService;
-  let testData: Array<Partial<Employee>>;
+  let mockEmployees: Array<Partial<Employee>>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
 
-    httpTestingController = TestBed.get(HttpTestingController);
-    service = TestBed.get(EmployeeService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(EmployeeService);
 
-    testData = [
+    mockEmployees = [
       {
         first_name: 'Sara'
       },
@@ -39,16 +39,16 @@ describe('Employee Service', () => {
   // If you change the xit to it, the test will probably fail.
   // If you change the xit to fit, the test will probably pass.
   xit('should return a delayed list (false positive)(the wrong way)', () => {
-    service.getDelayedList().subscribe(data => {
+    service.getDelayedList().subscribe(list => {
       // This line may not get executed before the test finishes!!!
-      expect(data).toEqual(['Bob', 'Joe', 'foo']);
+      expect(list).toEqual(['Bob', 'Joe', 'foo']);
     });
 
     const req = httpTestingController.expectOne('/api/employees');
 
     expect(req.request.method).toEqual('GET');
 
-    req.flush(testData);
+    req.flush(mockEmployees);
 
     httpTestingController.verify();
   });
@@ -57,15 +57,15 @@ describe('Employee Service', () => {
   // expectation in the subscribe gets executed in the scope of the test.
   // If you change the data in the expected array, the test will fail as expected.
   it('should return a delayed list (the right way)', async(() => {
-    service.getDelayedList().subscribe(data => {
-      expect(data).toEqual(['Bob', 'Joe', 'Sara']);
+    service.getDelayedList().subscribe(list => {
+      expect(list).toEqual(['Bob', 'Joe', 'Sara']);
     });
 
     const req = httpTestingController.expectOne('/api/employees');
 
     expect(req.request.method).toEqual('GET');
 
-    req.flush(testData);
+    req.flush(mockEmployees);
 
     httpTestingController.verify();
   }));
