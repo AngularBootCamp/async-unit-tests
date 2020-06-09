@@ -10,7 +10,7 @@ import { EmployeeService } from './employee.service';
 describe('Employee Service', () => {
   let httpTestingController: HttpTestingController;
   let service: EmployeeService;
-  let mockEmployees: Array<Partial<Employee>>;
+  let mockEmployees: Partial<Employee>[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
