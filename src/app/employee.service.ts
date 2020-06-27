@@ -16,7 +16,7 @@ export class EmployeeService {
   getDelayedList(): Observable<string[]> {
     return this.http.get<Employee[]>(apiUrl + '/employees').pipe(
       delay(2000), // this will force us to test asynchronously
-      map(employees => employees.map(e => e.first_name)),
+      map(employees => employees.map(e => e.firstName)),
       map(names => names.sort()),
       catchError(err => {
         console.error('handling error within getEmployees()', err);
