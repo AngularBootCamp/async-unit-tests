@@ -2,7 +2,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 
 import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
@@ -53,10 +53,10 @@ describe('Employee Service', () => {
     httpTestingController.verify();
   });
 
-  // Wrapping the test in Angular's async function ensures that the
+  // Wrapping the test in Angular's waitForAsync function ensures that the
   // expectation in the subscribe gets executed in the scope of the test.
   // If you change the data in the expected array, the test will fail as expected.
-  it('should return a delayed list (the right way)', async(() => {
+  it('should return a delayed list (the right way)', waitForAsync(() => {
     service.getDelayedList().subscribe(list => {
       expect(list).toEqual(['Bob', 'Joe', 'Sara']);
     });
