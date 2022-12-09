@@ -11,7 +11,7 @@ import { EmployeeService } from './employee.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  nameFilter = new FormControl('');
+  nameFilter = new FormControl('', { nonNullable: true });
   filteredTeam: Observable<Employee[]>;
 
   constructor(sw: EmployeeService) {
