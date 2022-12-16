@@ -1,7 +1,6 @@
 import { fakeAsync, tick } from '@angular/core/testing';
 import { createSpyObj } from 'jest-createspyobj';
-import { of } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { of, take } from 'rxjs';
 
 import { AppComponent } from './app.component';
 import { EmployeeService } from './employee.service';

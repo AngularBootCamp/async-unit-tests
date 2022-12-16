@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { catchError, delay, map } from 'rxjs/operators';
+import { Observable, of, catchError, delay, map } from 'rxjs';
 
 import { Employee } from './employee';
 

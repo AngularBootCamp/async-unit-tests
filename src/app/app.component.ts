@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { debounceTime, startWith, switchMap } from 'rxjs/operators';
+import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
 
 import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
