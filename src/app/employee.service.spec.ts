@@ -44,7 +44,7 @@ describe('Employee Service', () => {
       expect(list).toEqual(['Bob', 'Joe', 'foo']);
     });
 
-    const req = httpTestingController.expectOne('/api/employees');
+    const req = httpTestingController.expectOne('https://api.angularbootcamp.com/employees');
 
     expect(req.request.method).toEqual('GET');
 
