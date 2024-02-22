@@ -1,5 +1,5 @@
 import { fakeAsync, tick } from '@angular/core/testing';
-import { createSpyObj } from 'jest-createspyobj';
+import { Spy, createSpyFromClass } from 'jest-auto-spies';
 import { of, take } from 'rxjs';
 
 import { AppComponent } from './app.component';
@@ -8,10 +8,10 @@ import { employees } from './test-employees';
 
 describe('App Component', () => {
   let appComponent: AppComponent;
-  let employeeService: jest.Mocked<EmployeeService>;
+  let employeeService: Spy<EmployeeService>;
 
   beforeEach(() => {
-    employeeService = createSpyObj(EmployeeService);
+    employeeService = createSpyFromClass(EmployeeService);
   });
 
   describe('filtered team list (manual asynchronous testing with fakeAsync)', () => {
