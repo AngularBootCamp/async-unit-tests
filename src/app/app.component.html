@@ -17,5 +17,7 @@
     [formControl]="nameFilter"
   />
 
-  <pre *ngFor="let e of filteredTeam | async">{{ e | json }}</pre>
+  @for (e of filteredTeam | async; track e) {
+    <pre>{{ e | json }}</pre>
+  }
 </article>

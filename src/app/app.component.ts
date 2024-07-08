@@ -1,4 +1,4 @@
-import { NgFor, AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
@@ -10,7 +10,7 @@ import { EmployeeService } from './employee.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, AsyncPipe, JsonPipe]
+  imports: [ReactiveFormsModule, AsyncPipe, JsonPipe]
 })
 export class AppComponent {
   nameFilter = new FormControl('', { nonNullable: true });
